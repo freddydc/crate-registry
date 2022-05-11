@@ -1,5 +1,9 @@
-import { TodoCard } from './components/todo'
+import { TodoCard, TodoMenu } from './components/todo'
 
 export function App() {
-  return <TodoCard />
+  return (
+    <TodoCard>
+      <TodoMenu />
+    </TodoCard>
+  )
 }
