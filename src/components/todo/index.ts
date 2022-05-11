@@ -1,3 +1,5 @@
 export { TodoCard } from './TodoCard'
 export { TodoMenu } from './TodoMenu'
 export { TodoSearch } from './TodoSearch'
+export { TodoList } from './TodoList'
+export { TodoView } from './TodoView'

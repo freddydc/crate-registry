@@ -1,0 +1,79 @@
+.todo {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--blue);
+}
+
+.todo:nth-of-type(odd) {
+  background-color: var(--blue-light);
+}
+
+.todoView {
+  display: flex;
+  align-items: center;
+}
+
+.todoText {
+  margin-left: 0.75rem;
+  color: var(--gray);
+  font-size: 1.5rem;
+  flex-grow: 1;
+}
+
+.todoCheck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.todoCheck svg {
+  display: none;
+  width: 28px;
+  height: 28px;
+  stroke: var(--green);
+  stroke-width: 3;
+  position: absolute;
+}
+
+.todoCheck input {
+  appearance: none;
+  border-radius: 9999px;
+  border: 3px solid var(--gray-darker);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  z-index: 40;
+  margin: 0;
+}
+
+.todoCheck input:checked {
+  border-color: var(--green);
+}
+
+.todoCheck input:checked + svg {
+  display: inline-block;
+}
+
+.todoView button {
+  background-color: transparent;
+  padding: 0;
+  border-width: 0;
+  cursor: pointer;
+}
+
+.todoView button svg {
+  stroke: var(--gray-dark);
+  stroke-width: 3;
+  width: 28px;
+  height: 28px;
+}
+
+.todoView button:hover {
+  transform: scale(1.1);
+}
+
+.todoView button:hover svg {
+  stroke: var(--red);
+}

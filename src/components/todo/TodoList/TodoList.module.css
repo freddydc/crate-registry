@@ -1,0 +1,27 @@
+.todoList {
+  margin: 0 0.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 20rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.todoList ul {
+  list-style: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .todoList {
+    margin: 0 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .todoList {
+    padding: 0;
+  }
+}
