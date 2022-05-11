@@ -1,0 +1,63 @@
+.searchForm {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 1.25rem;
+}
+
+.searchForm svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--gray);
+}
+
+.searchForm form {
+  --search-form-focus-shadow: 0 0 0 3px var(--amber);
+  display: flex;
+  border-radius: 9999px;
+  background-color: #404040;
+  overflow: hidden;
+}
+
+.searchForm form:focus-within {
+  box-shadow: var(--search-form-focus-shadow), 0 2px 3px 4px var(--gray-darker);
+}
+
+.searchForm button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border-width: 0;
+  cursor: pointer;
+  padding: 0 0.875rem;
+}
+
+.searchForm input {
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  color: var(--gray);
+  font-weight: 500;
+  border-width: 0;
+  line-height: 1;
+  font-size: 1.25rem;
+  width: 100%;
+}
+
+.searchForm input:focus {
+  outline-width: 0;
+}
+
+.searchForm input::placeholder {
+  font-style: italic;
+  color: var(--gray-dark);
+}
+
+.searchForm input:focus::placeholder {
+  color: var(--gray-darker);
+}
+
+@media (min-width: 640px) {
+  .searchForm form {
+    min-width: 32rem;
+  }
+}
