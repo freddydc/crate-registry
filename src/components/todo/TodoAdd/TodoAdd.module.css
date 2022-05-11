@@ -1,0 +1,25 @@
+.creatorMenu {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem 1.25rem;
+  border-top: 1px solid var(--gray-darker);
+}
+
+.creatorMenu button {
+  color: var(--gray);
+  cursor: pointer;
+  border: 1px solid var(--gray-darker);
+  background-color: transparent;
+  font-size: 1.125rem;
+  line-height: 1;
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-weight: 600;
+}
+
+.creatorMenu button:hover {
+  transform: scale(1.1);
+  border-color: transparent;
+  background-color: var(--amber-dark);
+  color: var(--gray-light);
+}

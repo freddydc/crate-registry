@@ -1,4 +1,5 @@
 import {
+  TodoAdd,
   TodoCard,
   TodoList,
   TodoMenu,
@@ -39,6 +40,7 @@ export function App() {
           <TodoView key={item.id} text={item.text} completed={item.completed} />
         ))}
       </TodoList>
+      <TodoAdd />
     </TodoCard>
   )
 }
