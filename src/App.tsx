@@ -35,6 +35,10 @@ export function App() {
   const [crateList, setCrateList] = useState(defaultCrates)
   const [term, setTerm] = useState('')
 
+  const activeCrates = crateList.filter(x => x.completed === false).length
+  const completedCrates = crateList.filter(x => !!x.completed).length
+  const allCrates = crateList.length
+
   let crates = []
   if (term.length > 0) {
     const foundCrates = crateList.filter(crate =>
@@ -47,7 +51,11 @@ export function App() {
 
   return (
     <TodoCard>
-      <TodoMenu />
+      <TodoMenu
+        allCrates={allCrates}
+        activeCrates={activeCrates}
+        completedCrates={completedCrates}
+      />
       <TodoSearch term={term} setTerm={setTerm} />
       <TodoList>
         {crates.map(item => (
