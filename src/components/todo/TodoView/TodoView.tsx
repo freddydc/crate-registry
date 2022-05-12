@@ -3,14 +3,15 @@ import styles from './TodoView.module.css'
 type Props = {
   text: string
   completed: boolean
+  completeCrate: () => void
 }
 
-export const TodoView = ({ text }: Props) => {
+export const TodoView = ({ text, completeCrate, completed }: Props) => {
   return (
     <li className={styles.todo}>
       <div className={styles.todoView}>
         <div className={styles.todoCheck}>
-          <input type="checkbox" />
+          <input type="checkbox" checked={completed} onChange={completeCrate} />
           <svg
             fill="none"
             viewBox="0 0 24 24"

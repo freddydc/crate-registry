@@ -49,6 +49,13 @@ export function App() {
     crates = crateList
   }
 
+  const completeCrate = (id: string) => {
+    const crateIndex = crateList.findIndex(x => x.id === id)
+    const newList = [...crateList]
+    newList[crateIndex].completed = !newList[crateIndex].completed
+    setCrateList(newList)
+  }
+
   return (
     <TodoCard>
       <TodoMenu
@@ -59,7 +66,12 @@ export function App() {
       <TodoSearch term={term} setTerm={setTerm} />
       <TodoList>
         {crates.map(item => (
-          <TodoView key={item.id} text={item.text} completed={item.completed} />
+          <TodoView
+            key={item.id}
+            text={item.text}
+            completed={item.completed}
+            completeCrate={() => completeCrate(item.id)}
+          />
         ))}
       </TodoList>
       <TodoAdd />
