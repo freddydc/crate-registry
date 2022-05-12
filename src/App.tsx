@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   TodoAdd,
   TodoCard,
@@ -7,7 +8,7 @@ import {
   TodoView
 } from './components/todo'
 
-const crates = [
+const defaultCrates = [
   {
     id: '1',
     text: 'fuzz',
@@ -31,10 +32,23 @@ const crates = [
 ]
 
 export function App() {
+  const [crateList, setCrateList] = useState(defaultCrates)
+  const [term, setTerm] = useState('')
+
+  let crates = []
+  if (term.length > 0) {
+    const foundCrates = crateList.filter(crate =>
+      crate.text.toLowerCase().includes(term.toLowerCase())
+    )
+    crates = foundCrates
+  } else {
+    crates = crateList
+  }
+
   return (
     <TodoCard>
       <TodoMenu />
-      <TodoSearch />
+      <TodoSearch term={term} setTerm={setTerm} />
       <TodoList>
         {crates.map(item => (
           <TodoView key={item.id} text={item.text} completed={item.completed} />
