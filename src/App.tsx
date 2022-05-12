@@ -56,6 +56,13 @@ export function App() {
     setCrateList(newList)
   }
 
+  const deleteCrate = (id: string) => {
+    const crateIndex = crateList.findIndex(x => x.id === id)
+    const newList = [...crateList]
+    newList.splice(crateIndex, 1)
+    setCrateList(newList)
+  }
+
   return (
     <TodoCard>
       <TodoMenu
@@ -71,6 +78,7 @@ export function App() {
             text={item.text}
             completed={item.completed}
             completeCrate={() => completeCrate(item.id)}
+            deleteCrate={() => deleteCrate(item.id)}
           />
         ))}
       </TodoList>

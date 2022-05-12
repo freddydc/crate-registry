@@ -4,9 +4,15 @@ type Props = {
   text: string
   completed: boolean
   completeCrate: () => void
+  deleteCrate: () => void
 }
 
-export const TodoView = ({ text, completeCrate, completed }: Props) => {
+export const TodoView = ({
+  text,
+  completeCrate,
+  completed,
+  deleteCrate
+}: Props) => {
   return (
     <li className={styles.todo}>
       <div className={styles.todoView}>
@@ -26,7 +32,7 @@ export const TodoView = ({ text, completeCrate, completed }: Props) => {
           </svg>
         </div>
         <label className={styles.todoText}>{text}</label>
-        <button>
+        <button onClick={deleteCrate}>
           <svg
             fill="none"
             viewBox="0 0 24 24"
