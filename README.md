@@ -1,10 +1,26 @@
 # Crate Registry
 
-First, run the development server:
+This repository contains react course
+
+## How to work on this project?
+
+1. Clone the repository, if you haven't already:
 
 ```bash
-npm run dev
-# or
+git clone git@github.com:freddydc/crate-registry.git
+```
+
+## Quick guide to develop
+
+1. Install dependencies:
+
+```bash
+yarn install
+```
+
+2. Start the project:
+
+```bash
 yarn dev
 ```
 
