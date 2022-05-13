@@ -8,31 +8,26 @@ import {
   TodoView
 } from './components/todo'
 
-const defaultCrates = [
-  {
-    id: '1',
-    text: 'fuzz',
-    completed: true
-  },
-  {
-    id: '2',
-    text: 'baz',
-    completed: false
-  },
-  {
-    id: '3',
-    text: 'foo',
-    completed: false
-  },
-  {
-    id: '4',
-    text: 'fizz',
-    completed: false
-  }
-]
+type Crate = {
+  id: string
+  completed: boolean
+  text: string
+}
 
 export function App() {
-  const [crateList, setCrateList] = useState(defaultCrates)
+  const storage = localStorage.getItem('crates')
+  let crateStorage: Crate[] = []
+
+  if (!storage) {
+    localStorage.setItem(
+      'crates',
+      JSON.stringify([{ id: '1', text: 'fuzz', completed: true }])
+    )
+  } else {
+    crateStorage = JSON.parse(storage)
+  }
+
+  const [crateList, setCrateList] = useState(crateStorage)
   const [term, setTerm] = useState('')
 
   const activeCrates = crateList.filter(x => x.completed === false).length
@@ -49,18 +44,23 @@ export function App() {
     crates = crateList
   }
 
+  const saveCrate = (crates: Crate[]) => {
+    localStorage.setItem('crates', JSON.stringify(crates))
+    setCrateList(crates)
+  }
+
   const completeCrate = (id: string) => {
     const crateIndex = crateList.findIndex(x => x.id === id)
     const newList = [...crateList]
     newList[crateIndex].completed = !newList[crateIndex].completed
-    setCrateList(newList)
+    saveCrate(newList)
   }
 
   const deleteCrate = (id: string) => {
     const crateIndex = crateList.findIndex(x => x.id === id)
     const newList = [...crateList]
     newList.splice(crateIndex, 1)
-    setCrateList(newList)
+    saveCrate(newList)
   }
 
   return (
