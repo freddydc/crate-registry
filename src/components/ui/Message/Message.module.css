@@ -1,0 +1,15 @@
+.message {
+  display: flex;
+  justify-content: center;
+  color: var(--amber);
+  margin: 0.875rem 0;
+  font-size: 1.75rem;
+}
+
+.loading {
+  color: var(--gray);
+}
+
+.error {
+  color: var(--red);
+}

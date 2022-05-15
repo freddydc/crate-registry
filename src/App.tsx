@@ -7,12 +7,46 @@ import {
   TodoSearch,
   TodoView
 } from './components/todo'
+import { Message } from './components/ui'
 import { useLocalStorage } from './hooks/useLocalStorage'
 
+type Data = {
+  id: string
+  text: string
+  completed: boolean
+}
+
+function fetchData() {
+  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [data, setData] = useState<Array<Data>>([])
+  const [value, setValue] = useLocalStorage<Data[]>('crates', [])
+
+  setTimeout(() => {
+    try {
+      setData(value)
+      setLoading(false)
+    } catch (err) {
+      setError(true)
+    }
+  }, 1000)
+
+  return {
+    error,
+    loading,
+    data,
+    setValue
+  }
+}
+
 export function App() {
-  const [crateList, setCrateList] = useLocalStorage('crates', [
-    { id: '1', text: 'fuzz', completed: true }
-  ])
+  const {
+    error,
+    loading,
+    data: crateList,
+    setValue: setCrateList
+  } = fetchData()
+
   const [term, setTerm] = useState('')
 
   const activeCrates = crateList.filter(x => x.completed === false).length
@@ -52,6 +86,11 @@ export function App() {
       />
       <TodoSearch term={term} setTerm={setTerm} />
       <TodoList>
+        {loading && <Message text="Loading..." variant="loading" />}
+        {error && <Message text="An error occurred" variant="error" />}
+        {!loading && crateList.length === 0 && (
+          <Message text="Add your first crate!" />
+        )}
         {crates.map(item => (
           <TodoView
             key={item.id}
