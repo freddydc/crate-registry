@@ -4,13 +4,13 @@ import styles from './TodoSearch.module.css'
 type Event = (e: ChangeEvent<HTMLInputElement>) => void
 
 type Props = {
-  term: string
-  setTerm: (value: string) => void
+  term?: string
+  setTerm?: (value: string) => void
 }
 
 export const TodoSearch = ({ term, setTerm }: Props) => {
   const searchCrate: Event = e => {
-    setTerm(e.target.value)
+    // setTerm(e.target.value)
   }
 
   return (

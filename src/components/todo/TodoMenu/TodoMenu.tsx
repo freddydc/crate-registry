@@ -1,9 +1,9 @@
 import styles from './TodoMenu.module.css'
 
 type Props = {
-  activeCrates: number
-  completedCrates: number
-  allCrates: number
+  activeCrates?: number
+  completedCrates?: number
+  allCrates?: number
 }
 
 export const TodoMenu = ({
