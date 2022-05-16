@@ -1,16 +1,10 @@
+import { useContext } from 'react'
+import { TodoContext } from '../context'
 import styles from './TodoMenu.module.css'
 
-type Props = {
-  activeCrates?: number
-  completedCrates?: number
-  allCrates?: number
-}
+export const TodoMenu = () => {
+  const { allCrates, activeCrates, completedCrates } = useContext(TodoContext)
 
-export const TodoMenu = ({
-  activeCrates,
-  completedCrates,
-  allCrates
-}: Props) => {
   return (
     <div className={styles.summaryMenu}>
       <ul>

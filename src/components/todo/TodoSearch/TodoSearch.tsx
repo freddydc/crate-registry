@@ -1,16 +1,14 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useContext } from 'react'
+import { TodoContext } from '../context'
 import styles from './TodoSearch.module.css'
 
 type Event = (e: ChangeEvent<HTMLInputElement>) => void
 
-type Props = {
-  term?: string
-  setTerm?: (value: string) => void
-}
+export const TodoSearch = () => {
+  const { setSearchTerm, searchTerm } = useContext(TodoContext)
 
-export const TodoSearch = ({ term, setTerm }: Props) => {
   const searchCrate: Event = e => {
-    // setTerm(e.target.value)
+    setSearchTerm(e.target.value)
   }
 
   return (
@@ -18,7 +16,7 @@ export const TodoSearch = ({ term, setTerm }: Props) => {
       <form>
         <input
           placeholder="Click to search..."
-          value={term}
+          value={searchTerm}
           onChange={searchCrate}
         />
         <button>
