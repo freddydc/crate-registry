@@ -8,10 +8,10 @@ import {
   TodoView
 } from '../../todo'
 import { TodoContext } from '../../todo/context'
-import { Message } from '../../ui'
+import { Message, Modal } from '../../ui'
 
 export const Layout = () => {
-  const { crateList, error, loading, completeCrate, deleteCrate } =
+  const { crateList, error, loading, completeCrate, deleteCrate, openModal } =
     useContext(TodoContext)
 
   return (
@@ -34,6 +34,11 @@ export const Layout = () => {
           />
         ))}
       </TodoList>
+      {!!openModal && (
+        <Modal>
+          <Message text={crateList[0]?.text} />
+        </Modal>
+      )}
       <TodoAdd />
     </TodoCard>
   )

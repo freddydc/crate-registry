@@ -22,6 +22,8 @@ type State = {
   setCrateList: Dispatch<SetStateAction<Crate[]>>
   searchTerm: string
   setSearchTerm: Dispatch<SetStateAction<string>>
+  openModal: boolean
+  setOpenModal: Dispatch<SetStateAction<boolean>>
   activeCrates: number
   completedCrates: number
   allCrates: number
@@ -66,6 +68,7 @@ export const TodoProvider = (props: Props) => {
     data: crates,
     setLocalData: setCrateList
   } = fetchData()
+  const [openModal, setOpenModal] = useState(false)
 
   const activeCrates = crates.filter(x => x.completed === false).length
   const completedCrates = crates.filter(x => !!x.completed).length
@@ -105,7 +108,9 @@ export const TodoProvider = (props: Props) => {
     completedCrates,
     activeCrates,
     deleteCrate,
-    completeCrate
+    completeCrate,
+    openModal,
+    setOpenModal
   }
 
   return (

@@ -23,3 +23,7 @@
   background-color: var(--amber-dark);
   color: var(--gray-light);
 }
+
+.hideMenu {
+  visibility: hidden;
+}
