@@ -35,6 +35,7 @@ type State = {
   getCompleted: () => void
   getActive: () => void
   getAll: () => void
+  addCrate: (text: string) => void
 }
 
 const initialState = {} as State
@@ -82,6 +83,17 @@ export const TodoProvider = (props: Props) => {
     setFilteredCrate(crateList.filter(x => !x.completed))
   }
 
+  const addCrate = (text: string) => {
+    const newCrateList = [...crateList]
+    newCrateList.push({
+      completed: false,
+      text,
+      id: Math.random().toString().slice(2)
+    })
+    setCrateList(newCrateList)
+    setFilteredCrate(newCrateList)
+  }
+
   useEffect(() => {
     if (searchTerm.length !== 0) {
       setFilteredCrate(
@@ -120,7 +132,8 @@ export const TodoProvider = (props: Props) => {
     setOpenModal,
     getCompleted,
     getActive,
-    getAll
+    getAll,
+    addCrate
   }
 
   return (

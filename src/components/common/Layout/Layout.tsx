@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import {
   TodoAdd,
   TodoCard,
+  TodoForm,
   TodoList,
   TodoMenu,
   TodoSearch,
@@ -40,7 +41,7 @@ export const Layout = () => {
       </TodoList>
       {!!openModal && (
         <Modal>
-          <Message text={crateList[0]?.text} />
+          <TodoForm />
         </Modal>
       )}
       <TodoAdd />
