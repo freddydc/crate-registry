@@ -19,20 +19,24 @@ export const Layout = () => {
       <TodoMenu />
       <TodoSearch />
       <TodoList>
-        {loading && <Message text="Loading..." variant="loading" />}
-        {error && <Message text="An error occurred" variant="error" />}
+        {loading ? (
+          <Message text="Loading..." variant="loading" />
+        ) : error ? (
+          <Message text="An error occurred" variant="error" />
+        ) : (
+          crateList.map(item => (
+            <TodoView
+              key={item.id}
+              text={item.text}
+              completed={item.completed}
+              completeCrate={() => completeCrate(item.id)}
+              deleteCrate={() => deleteCrate(item.id)}
+            />
+          ))
+        )}
         {!loading && crateList.length === 0 && (
           <Message text="Add your first crate!" />
         )}
-        {crateList.map(item => (
-          <TodoView
-            key={item.id}
-            text={item.text}
-            completed={item.completed}
-            completeCrate={() => completeCrate(item.id)}
-            deleteCrate={() => deleteCrate(item.id)}
-          />
-        ))}
       </TodoList>
       {!!openModal && (
         <Modal>
