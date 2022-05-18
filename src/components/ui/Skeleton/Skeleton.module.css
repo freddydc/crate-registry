@@ -1,0 +1,28 @@
+.container {
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+  background-color: var(--blue-light);
+}
+
+.container p:first-child {
+  margin-bottom: 0.25rem;
+}
+
+.container p:last-child {
+  width: 75%;
+}
+
+.container p {
+  height: 0.625rem;
+  border-radius: 9999px;
+  background-color: var(--gray-dark);
+  animation: animate-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  margin: 0;
+}
+
+@keyframes animate-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}

@@ -9,7 +9,7 @@ import {
   TodoView
 } from '../../todo'
 import { TodoContext } from '../../todo/context'
-import { Message, Modal } from '../../ui'
+import { Message, Modal, Skeleton } from '../../ui'
 
 export const Layout = () => {
   const { crateList, error, loading, completeCrate, deleteCrate, openModal } =
@@ -21,7 +21,7 @@ export const Layout = () => {
       <TodoSearch />
       <TodoList>
         {loading ? (
-          <Message text="Loading..." variant="loading" />
+          <Skeleton />
         ) : error ? (
           <Message text="An error occurred" variant="error" />
         ) : (
